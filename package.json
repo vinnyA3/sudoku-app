@@ -1,0 +1,28 @@
+{
+  "name": "sudoku_app",
+  "version": "1.0.0",
+  "description": "Sudoku Application",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinnyA3/sudoku-app.git"
+  },
+  "keywords": [
+    "Sudoku",
+    "JavaScript"
+  ],
+  "author": "vinnya3",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinnyA3/sudoku-app/issues"
+  },
+  "homepage": "https://github.com/vinnyA3/sudoku-app#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "precss": "^1.4.0",
+    "webpack": "^1.13.1"
+  }
+}
