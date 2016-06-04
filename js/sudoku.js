@@ -1,6 +1,10 @@
-  var Sudoku = (function(){
+//require mustache for box_hovered_template ..
+require('mustache');
 
-   var sudoku_container = document.querySelector('.sudoku');
+	var Sudoku = (function(){
+
+   var sudoku_container = document.querySelector('.sudoku'),
+	 		 sudoku_box;
 	 //flip array algorithm ... will refactor soon...
 	 /*
 	 	var arr1 = [1,2,3,
@@ -23,12 +27,29 @@
 		var flippedArr = flipArray(arr1,3);
 		console.log(flippedArr);
 	 */
+
    function _createSubGrid(el){
       var element = el;
       for(var i = 0; i < 9; ++i){
         var box = document.createElement('div'),
+				    box_module = document.createElement('div'),
             currentBox = ' box' + i;
+				//add classes to the box
         box.className = 'box' + currentBox;
+				//add the class to the box module and append that to the box
+				box_module.className = 'box__hovered';
+				box_module.innerHTML = '<p>1, 2, 3, 4, 5<br>6, 7, 8, 9</p>';
+				box.appendChild(box_module);
+				//add mouse event listener to the box ( display: block)
+				box.addEventListener('mouseover', function(){
+					var box_content = this.querySelector('.box__hovered');
+					box_content.style.display = 'block';
+				});
+				//add mouseout event (display: none)
+				box.addEventListener('mouseout', function(){
+					var box_content = this.querySelector('.box__hovered');
+					box_content.style.display = 'none';
+				});
         element.appendChild(box);
       }
     }
