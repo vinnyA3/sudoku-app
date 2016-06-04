@@ -1,9 +1,8 @@
-(function() {
   var Sudoku = (function(){
 
-    var sudoku_container = document.querySelector('.sudoku');
+   var sudoku_container = document.querySelector('.sudoku')
 
-    var _createSubGrid = function(el){
+   function _createSubGrid(el){
       var element = el;
       for(var i = 0; i < 9; ++i){
         var box = document.createElement('div'),
@@ -13,7 +12,7 @@
       }
     }
 
-    var addGridModule = function() {
+    function addGridModule() {
       //in the game sudoku, there are 9 modules containing 9 sub modules (boxes)
       for(var i = 0; i < 9; ++i) {
         //create the grid module, add the class and append to sudoku container
@@ -31,5 +30,3 @@
   })(); //end sudoku module
 
   Sudoku.createGrid();
-
-})();
