@@ -13,11 +13,27 @@
   margin: 0;
 }
 
-.box{
+.box {
+	position: relative;
   width: 33.333%;
   height: 50px;
   margin: 0;
   margin-bottom: -5px;
   border: 2px solid black;
   display: inline-block;
+}
+
+.box__hovered {
+	position: absolute;
+	z-index: 2000;
+	display: none;
+	padding: $pg-padding;
+	background: #fff;
+	border: 1px solid #000;
+	box-shadow: -2px 0px 2px rgba(0,0,0,0.4);
+	top: 0;
+	left: 0;
+	&:hover {
+		cursor: pointer;
+	}
 }
