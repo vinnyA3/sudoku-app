@@ -1,7 +1,28 @@
   var Sudoku = (function(){
 
-   var sudoku_container = document.querySelector('.sudoku')
-
+   var sudoku_container = document.querySelector('.sudoku');
+	 //flip array algorithm ... will refactor soon...
+	 /*
+	 	var arr1 = [1,2,3,
+            	4,5,6,
+            	7,8,9];
+		function flipArray(arr, numRowAndCols){
+  		var firstIndex,
+      		newArr = [],
+      		subtractBy = numRowsandCols,
+      		columnNum = numRowsandCols;
+			while(columnNum > 0){
+    		firstIndex = ((arr.length - 1) - (columnNum - 1));
+    		for(var i = firstIndex; i >= 0; i = i - subtractBy) {
+ 	 				newArr.push(arr[i]);
+				}
+    		columnNum--;
+  		}
+  		return newArr;
+		}
+		var flippedArr = flipArray(arr1,3);
+		console.log(flippedArr);
+	 */
    function _createSubGrid(el){
       var element = el;
       for(var i = 0; i < 9; ++i){
