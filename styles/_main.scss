@@ -1,0 +1,41 @@
+/* Variables */
+$pg-padding: .8em;
+
+* { box-sizing: border-box; }
+
+html,body{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.container {
+  height: inherit;
+  width: inherit;
+  margin: 0;
+  padding: $pg-padding;
+}
+
+.sudoku {
+  margin: 0 auto;
+  background: #aaa;
+  width: 90%;
+  @media screen and (min-width: 900px) {
+    width: 40%;
+  }
+}
+
+.sudoku__module {
+  width: 33.333%;
+  display:inline-block;
+  margin: 0;
+}
+
+.box{
+  width: 33.333%;
+  height: 50px;
+  margin: 0;
+  margin-bottom: -5px;
+  border: 2px solid black;
+  display: inline-block;
+}
