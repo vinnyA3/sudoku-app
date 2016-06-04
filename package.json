@@ -4,7 +4,7 @@
   "description": "Sudoku Application",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --inline"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,12 @@
   "homepage": "https://github.com/vinnyA3/sudoku-app#readme",
   "devDependencies": {
     "autoprefixer": "^6.3.6",
+    "css-loader": "^0.23.1",
+    "node-sass": "^3.7.0",
+    "postcss-loader": "^0.9.1",
     "precss": "^1.4.0",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
     "webpack": "^1.13.1"
   }
 }
