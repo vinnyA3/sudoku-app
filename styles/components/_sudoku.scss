@@ -1,0 +1,23 @@
+.sudoku {
+  margin: 0 auto;
+  background: #aaa;
+  width: 90%;
+  @media screen and (min-width: 900px) {
+    width: 40%;
+  }
+}
+
+.sudoku__module {
+  width: 33.333%;
+  display:inline-block;
+  margin: 0;
+}
+
+.box{
+  width: 33.333%;
+  height: 50px;
+  margin: 0;
+  margin-bottom: -5px;
+  border: 2px solid black;
+  display: inline-block;
+}
