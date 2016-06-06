@@ -71,7 +71,7 @@ var Sudoku = (function(){
       }
     }
     return {
-      createGrid: addGridModule
+      render: addGridModule
     }
   })(); //end sudoku module
 
