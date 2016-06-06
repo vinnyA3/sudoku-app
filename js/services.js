@@ -1,15 +1,28 @@
 //require jquery
-require('jquery');
-var MustacheService = (function($){
+var jQuery = require('jquery'),
+		Mustache = require('mustache');
 
-	function _getMustacheTemplate(){
-		return $.get('./js_templates/box_hovered_template.mst')
-			.then(function(data){
-				return data;
+var MustacheService = (function($, Mustache){
+
+	function getMustacheTemplate(){
+		var q = $.Deferred();
+		$.get('js/js_templates/box_hovered_template.htm')
+			.success(function(template){
+					var view = {name: 'Vinny'},
+							getHtml = $(template).html(),
+							html = Mustache.render(getHtml, view);
+							q.resolve(html);
+			})
+			.error(function(){
+				var message = 'Could not load template...',
+						err = new Error(message);
+				q.reject(err);
 			});
+		return q;
 	}
-
 	return{
-		getTemplate: _getMustacheTemplate
+		getTemplate: getMustacheTemplate
 	}
-})(jQuery);
+})(jQuery, Mustache);
+
+module.exports = MustacheService;
