@@ -4,25 +4,21 @@ var jQuery = require('jquery'),
 
 var MustacheService = (function($, Mustache){
 
-	function getMustacheTemplate(){
-		var q = $.Deferred();
-		$.get('js/js_templates/box_hovered_template.htm')
-			.success(function(template){
-					var view = {name: 'Vinny'},
-							getHtml = $(template).html(),
-							html = Mustache.render(getHtml, view);
-							q.resolve(html);
-			})
-			.error(function(){
-				var message = 'Could not load template...',
-						err = new Error(message);
-				q.reject(err);
-			});
-		return q;
-	}
+	var _cache = {};
+
+	function getMustacheTemplate(callback){
+		//if have the response cached, return that
+		if(!_cache['template']){
+			_cache['template'] = $.get('partials/box_hovered_template.htm')
+				.promise();
+		}
+		return _cache['template'];
+	}// ./getMustacheTemplate
+
 	return{
 		getTemplate: getMustacheTemplate
 	}
+
 })(jQuery, Mustache);
 
 module.exports = MustacheService;
