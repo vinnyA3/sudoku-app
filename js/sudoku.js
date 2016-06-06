@@ -1,10 +1,14 @@
 //require mustache for box_hovered_template ..
-require('mustache');
+var MustacheService = require('./services.js');
 
-	var Sudoku = (function(){
+var Sudoku = (function(){
 
    var sudoku_container = document.querySelector('.sudoku'),
-	 		 sudoku_box;
+	 		 sudoku_box,
+			 mustacheTemplate = MustacheService.getTemplate().then(function(data){
+				  return data;
+			 });
+			 console.log(mustacheTemplate);
 	 //flip array algorithm ... will refactor soon...
 	 /*
 	 	var arr1 = [1,2,3,
@@ -38,7 +42,7 @@ require('mustache');
         box.className = 'box' + currentBox;
 				//add the class to the box module and append that to the box
 				box_module.className = 'box__hovered';
-				box_module.innerHTML = '<p>1, 2, 3, 4, 5<br>6, 7, 8, 9</p>';
+				box_module.innerHTML = mustacheTemplate;
 				box.appendChild(box_module);
 				//add mouse event listener to the box ( display: block)
 				box.addEventListener('mouseover', function(){
@@ -71,4 +75,4 @@ require('mustache');
     }
   })(); //end sudoku module
 
-  Sudoku.createGrid();
+module.exports = Sudoku;
