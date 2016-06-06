@@ -35,9 +35,7 @@ var Sudoku = (function($, Mustache){
 				MustacheService.getTemplate()
 					.then(function(data){
 						var element = el;
-						var box,
-								box_module,
-		            cuurentBox,
+						var box, box_module, currentBox,
 								view = $(data).html(),
 								htmlTemplate = Mustache.render(view, {name: 'Vinny'});
 						for(var i = 0; i < 9; ++i){
@@ -46,7 +44,6 @@ var Sudoku = (function($, Mustache){
 							box_module = document.createElement('div');
 							//set the current box number
 							currentBox = ' box' + i;
-							console.log(currentBox);
 							//add classes to the box
 							box.className = 'box' + currentBox;
 							//add the class to the box module and
