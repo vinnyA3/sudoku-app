@@ -5,9 +5,12 @@ var MustacheService = require('./services.js'),
 
 var Sudoku = (function($, Mustache){
 
-   var sudoku_container = document.querySelector('.sudoku'),
-	 		 sudoku_box;
-	 //flip array algorithm ... will refactor soon...
+   var sudoku_container = document.querySelector('.sudoku'), sudoku_box,
+	 	   //simple data used to populate the mustache template
+			 mustacheData = {
+				 "numbers": ['1','2','3','4','5','6','7','8','9']
+			 };
+	 //flip array algorithm ... used for game checking..will refactor soon...
 	 /*
 	 	var arr1 = [1,2,3,
             	4,5,6,
@@ -29,6 +32,15 @@ var Sudoku = (function($, Mustache){
 		var flippedArr = flipArray(arr1,3);
 		console.log(flippedArr);
 	 */
+	 function _populateGrid(){
+		 var container = sudoku_container;
+		 var $boxes = $(sudoku_container).find('.sudoku__module');
+		 console.log($boxes);
+		$boxes.each(function(){
+			 console.log($(this));
+			$(this).css('background-color', 'red');
+		});
+	 }
 
    function _createSubGrid(el){
 
@@ -36,9 +48,6 @@ var Sudoku = (function($, Mustache){
 					.then(function(data){
 						var element = el;
 						var box, box_module, currentBox,
-							  mustacheData = {
-									"numbers": ['1','2','3','4','5','6','7','8','9']
-								},
 								mustacheView = $(data).html(),
 								htmlTemplate = Mustache.render(mustacheView, mustacheData);
 						for(var i = 0; i < 9; ++i){
@@ -81,6 +90,7 @@ var Sudoku = (function($, Mustache){
         //create the sub grid
         _createSubGrid(box);
       }
+			_populateGrid();
     }
     return {
       render: addGridModule
