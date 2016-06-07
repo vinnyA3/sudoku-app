@@ -1,6 +1,6 @@
-var webpack = require('webpack');
-var precss = require('precss');
-var autoprefixer = require('autoprefixer');
+var webpack = require('webpack'),
+		precss = require('precss'),
+		autoprefixer = require('autoprefixer');
 
 module.exports = {
 	entry: './js/main.js',
