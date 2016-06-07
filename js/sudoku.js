@@ -36,8 +36,11 @@ var Sudoku = (function($, Mustache){
 					.then(function(data){
 						var element = el;
 						var box, box_module, currentBox,
-								view = $(data).html(),
-								htmlTemplate = Mustache.render(view, {name: 'Vinny'});
+							  mustacheData = {
+									"numbers": ['1','2','3','4','5','6','7','8','9']
+								},
+								mustacheView = $(data).html(),
+								htmlTemplate = Mustache.render(mustacheView, mustacheData);
 						for(var i = 0; i < 9; ++i){
 							//create our new box and box module
 							box = document.createElement('div');
@@ -82,6 +85,6 @@ var Sudoku = (function($, Mustache){
     return {
       render: addGridModule
     }
-  })(jQuery,Mustache); //end sudoku module
+  })(jQuery, Mustache); //end sudoku module
 
 module.exports = Sudoku;
