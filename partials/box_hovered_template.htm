@@ -1,3 +1,9 @@
 <script id="template" type="x-tmpl-mustache">
-	<p class='box__hovered-text'>Hello, {{ name }}</p>
+	<p class='box__hovered-text'>
+		<ul class='hovered__list'>
+		{{#numbers}}
+			<li class="hovered__number">{{.}}</li>
+		{{/numbers}}
+		</ul>
+	</p>
 </script>
