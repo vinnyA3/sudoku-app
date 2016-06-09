@@ -1,15 +1,9 @@
 //require mustache for box_hovered_template ..
-var MustacheService = require('./services.js'),
-		Mustache = require('mustache'),
-		jQuery = require('jquery');
+var MustacheService = require('./services.js');
 
-var Sudoku = (function($, Mustache){
+var Sudoku = (function(){
 
-   var sudoku_container = document.querySelector('.sudoku'), sudoku_box,
-	 	   //simple data used to populate the mustache template
-			 mustacheData = {
-				 "numbers": ['1','2','3','4','5','6','7','8','9']
-			 };
+   var sudoku_container = document.querySelector('.sudoku');
 	 //flip array algorithm ... used for game checking..will refactor soon...
 	 /*
 	 	var arr1 = [1,2,3,
@@ -32,69 +26,30 @@ var Sudoku = (function($, Mustache){
 		var flippedArr = flipArray(arr1,3);
 		console.log(flippedArr);
 	 */
-	 function _populateGrid(){
+	 function _createGrid(){
+		 //grab the cached DOM game container
 		 var container = sudoku_container;
-		 var $boxes = $(sudoku_container).find('.sudoku__module');
-		 console.log($boxes);
-		$boxes.each(function(){
-			 console.log($(this));
-			$(this).css('background-color', 'red');
-		});
-	 }
+		 //Now, lets create the grid....
+		 //9 game modules will be dynamically created. A sudoku module is a container that will contain 9 boxes (sudoku__box)
+		 for(var i = 0; i < 9; ++i){
+			 var sudoku__module = document.createElement('div'),
+					//add a labeling class to the game module: module0, module1 ..etc
+					current_module = ' module' + i;
+					sudoku__module.className = 'sudoku__module' + current_module;
+					//Now, add 9 games boxes to the current module
+					for(var j = 0; j < 9; ++j){
+						var sudoku__box = document.createElement('div'),
+						current_box = ' box' + j;
+						sudoku__box.className = 'sudoku__box' + current_box;
+						//append the game box to the current game module
+						sudoku__module.appendChild(sudoku__box);
+					}
+					//append the game module to the game contaier
+					container.appendChild(sudoku__module);
+			}
+	 }// ./_createGrid
 
-   function _createSubGrid(el){
+	 //create the grid
+	 _createGrid();
 
-				MustacheService.getTemplate()
-					.then(function(data){
-						var element = el;
-						var box, box_module, currentBox,
-								mustacheView = $(data).html(),
-								htmlTemplate = Mustache.render(mustacheView, mustacheData);
-						for(var i = 0; i < 9; ++i){
-							//create our new box and box module
-							box = document.createElement('div');
-							box_module = document.createElement('div');
-							//set the current box number
-							currentBox = ' box' + i;
-							//add classes to the box
-							box.className = 'box' + currentBox;
-							//add the class to the box module and
-							box_module.className = 'box__hovered';
-							//add the rendered template to the box_module
-   						box_module.innerHTML = htmlTemplate;
-							//append that to the box
-							box.appendChild(box_module);
-							//add mouse event listener to the box ( display: block)
-							box.addEventListener('mouseover', function(){
-								var box_content = this.querySelector('.box__hovered');
-								box_content.style.display = 'block';
-							});
-							//add mouseout event (display: none)
-							box.addEventListener('mouseout', function(){
-								var box_content = this.querySelector('.box__hovered');
-								box_content.style.display = 'none';
-							});
-						element.appendChild(box);
-					}//end for loop
-				});
-    }// ./createSubGrid
-
-    function addGridModule() {
-      //in the game sudoku, there are 9 modules containing 9 sub modules (boxes)
-      for(var i = 0; i < 9; ++i) {
-        //create the grid module, add the class and append to sudoku container
-        var box = document.createElement('div'),
-            currentModule = ' module' + i;
-        box.className = 'sudoku__module' + currentModule;
-        sudoku_container.appendChild(box);
-        //create the sub grid
-        _createSubGrid(box);
-      }
-			_populateGrid();
-    }
-    return {
-      render: addGridModule
-    }
-  })(jQuery, Mustache); //end sudoku module
-
-module.exports = Sudoku;
+  })(); //end sudoku module
