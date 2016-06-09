@@ -30,24 +30,43 @@ var Sudoku = (function(){
 		 //Now, lets create the grid....
 		 //9 sudoku modules will be dynamically created. A sudoku module is a container that will contain 9 boxes (sudoku__box)
 		 for(var i = 0; i < 9; ++i){
-			 var sudoku__module = document.createElement('div'),
+			 var sudoku_module = document.createElement('div'),
 					//add a labeling class to the sudoku module: module0, module1 ..etc
 					current_module = ' module' + i;
-					sudoku__module.className = 'sudoku__module' + current_module;
+					sudoku_module.className = 'sudoku__module' + current_module;
 					//Now, add 9 sudoku boxes to the current module
 					for(var j = 0; j < 9; ++j){
-						var sudoku__box = document.createElement('div'),
+						var sudoku_box = document.createElement('div'),
 						current_box = ' box' + j;
-						sudoku__box.className = 'sudoku__box' + current_box;
+						sudoku_box.className = 'sudoku__box' + current_box;
 						//append the sudoku box to the current sudoku module
-						sudoku__module.appendChild(sudoku__box);
+						sudoku_module.appendChild(sudoku_box);
 					}
 					//append the sudoku module to the sudoku contaier
-					container.appendChild(sudoku__module);
+					container.appendChild(sudoku_module);
 			}
 	 }// ./_createGrid
 
+	 //test function -> get the children of all the sudoku__modules (sudoku__boxes)
+	 // and change the color to salmon :D
+	 function _temp(){
+		 //define our variables -> sudoku container, and sudoku_modules
+		 	var container = sudoku_container,
+					sudoku_modules = container.querySelectorAll('.sudoku__module');
+			//loop over nodelist of modules
+			sudoku_modules.forEach(function(module){
+				//convert the nodelist (module) to a traversable array object
+				var sudoku_boxes = Array.prototype.slice
+					.call(module.children)
+					.forEach(function(box){
+						box.style.background = 'salmon';
+					});
+			});
+	 }
+
 	 //create the grid
 	 _createGrid();
+	 //call temp
+	 _temp();
 
   })(); //end sudoku module
