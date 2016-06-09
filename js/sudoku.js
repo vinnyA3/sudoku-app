@@ -1,5 +1,3 @@
-//require mustache for box_hovered_template ..
-var MustacheService = require('./services.js');
 
 var Sudoku = (function(){
 
