@@ -28,21 +28,21 @@ var Sudoku = (function(){
 		 //grab the cached DOM game container
 		 var container = sudoku_container;
 		 //Now, lets create the grid....
-		 //9 game modules will be dynamically created. A sudoku module is a container that will contain 9 boxes (sudoku__box)
+		 //9 sudoku modules will be dynamically created. A sudoku module is a container that will contain 9 boxes (sudoku__box)
 		 for(var i = 0; i < 9; ++i){
 			 var sudoku__module = document.createElement('div'),
-					//add a labeling class to the game module: module0, module1 ..etc
+					//add a labeling class to the sudoku module: module0, module1 ..etc
 					current_module = ' module' + i;
 					sudoku__module.className = 'sudoku__module' + current_module;
-					//Now, add 9 games boxes to the current module
+					//Now, add 9 sudoku boxes to the current module
 					for(var j = 0; j < 9; ++j){
 						var sudoku__box = document.createElement('div'),
 						current_box = ' box' + j;
 						sudoku__box.className = 'sudoku__box' + current_box;
-						//append the game box to the current game module
+						//append the sudoku box to the current sudoku module
 						sudoku__module.appendChild(sudoku__box);
 					}
-					//append the game module to the game contaier
+					//append the sudoku module to the sudoku contaier
 					container.appendChild(sudoku__module);
 			}
 	 }// ./_createGrid
