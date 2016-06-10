@@ -2,6 +2,22 @@
 var Sudoku = (function(){
 
    var sudoku_container = document.querySelector('.sudoku');
+
+	 function _flipArray(arr, numRowsandCols){
+			 var firstIndex,
+					 newArr = [],
+					 subtractBy = numRowsandCols,
+					 columnNum = numRowsandCols;
+			 while(columnNum > 0){
+				 firstIndex = ((arr.length - 1) - (columnNum - 1));
+				 for(var i = firstIndex; i >= 0; i = i - subtractBy) {
+						 newArr.push(arr[i]);
+				 }
+				 columnNum--;
+			 }//end while
+			return newArr;
+	 }
+
 	 //flip array algorithm ... used for game checking..will refactor soon...
 	 /*
 	 	var arr1 = [1,2,3,
