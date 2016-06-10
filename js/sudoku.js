@@ -1,45 +1,35 @@
 
 var Sudoku = (function(){
-
+   //cache sudoku element
    var sudoku_container = document.querySelector('.sudoku');
 
-	 function _flipArray(arr, numRowsandCols){
+	 //This function will flip and array grid 90 deg to the right
+	 // ! view the array as a 9 X 9 grid ... its Sudoku!
+	 //Note: This algorithm can be used to flip any grid array of equal size and
+	 //column.  Just swap the hardcoded 9s to the desired number.
+	 function _flipArray(arr){
 			 var firstIndex,
 					 newArr = [],
-					 subtractBy = numRowsandCols,
-					 columnNum = numRowsandCols;
+					 //The subract by variable will allows us to move 9 blocks to the
+					 //next row and box number in the grid. we take that number and push
+					 //that into the new arr
+					 subtractBy = 9,
+					 //In sudoku, the number of columns / rows will always be 9
+					 columnNum = 9;
 			 while(columnNum > 0){
+				 //the first index variable is key here ... we are always subtracting
+				 // the column every while loop.  The will effectively shift the targeted
+				 // column every pass.
 				 firstIndex = ((arr.length - 1) - (columnNum - 1));
 				 for(var i = firstIndex; i >= 0; i = i - subtractBy) {
 						 newArr.push(arr[i]);
 				 }
+				 //subtract and go to the next column
 				 columnNum--;
 			 }//end while
 			return newArr;
-	 }
+	 } //./_flipArray
 
-	 //flip array algorithm ... used for game checking..will refactor soon...
-	 /*
-	 	var arr1 = [1,2,3,
-            	4,5,6,
-            	7,8,9];
-		function flipArray(arr, numRowAndCols){
-  		var firstIndex,
-      		newArr = [],
-      		subtractBy = numRowsandCols,
-      		columnNum = numRowsandCols;
-			while(columnNum > 0){
-    		firstIndex = ((arr.length - 1) - (columnNum - 1));
-    		for(var i = firstIndex; i >= 0; i = i - subtractBy) {
- 	 				newArr.push(arr[i]);
-				}
-    		columnNum--;
-  		}
-  		return newArr;
-		}
-		var flippedArr = flipArray(arr1,3);
-		console.log(flippedArr);
-	 */
 	 function _createGrid(){
 		 //grab the cached DOM game container
 		 var container = sudoku_container;
