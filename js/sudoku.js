@@ -30,6 +30,7 @@ var Sudoku = (function(){
 			return newArr;
 	 } //./_flipArray
 
+	 // Dynamically creat the grid
 	 function _createGrid(){
 		 //grab the cached DOM game container
 		 var container = sudoku_container;
