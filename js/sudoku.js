@@ -71,9 +71,15 @@ var Sudoku = (function(){
 			});
 	 }
 
-	 //create the grid
-	 _createGrid();
-	 //call temp
-	 _temp();
+	 function init(){
+		 //create the grid
+		 _createGrid();
+		 //call temp
+		 _temp();
+	 }
+
+	 return {
+		 init: init
+	 }
 
   })(); //end sudoku module
