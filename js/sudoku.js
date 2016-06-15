@@ -1,7 +1,9 @@
 
 var Sudoku = (function(){
    //cache sudoku element
-   var sudoku_container = document.querySelector('.sudoku');
+   var sudoku_container = document.querySelector('.sudoku'),
+	 		 //grid array -> will contain all the numbers in the grid
+			 sudoku_grid = [];
 
 	 //This function will flip and array grid 90 deg to the right
 	 // ! view the array as a 9 X 9 grid ... its Sudoku!
@@ -30,6 +32,23 @@ var Sudoku = (function(){
 			return newArr;
 	 } //./_flipArray
 
+	 /*function _sudokuCheck(){
+		 var sudoku_arr = sudoku_grid,
+		 		 sudoku_column = [];
+		 for(var i = 0 ; i < 9; ++i){
+
+		 }
+	 }*/
+
+	 function _randomizeGrid(difficulty){
+		 if(difficulty === 'easy'){
+			 for(var i = 0; i < 81; ++i){
+				 var randomNum = Math.random() * (10 - 1) + 1;
+				 sudoku_grid.push(Math.floor(randomNum));
+			 }
+		 }
+	 }// ./_randomizeGrid
+
 	 // Dynamically creat the grid
 	 function _createGrid(){
 		 //grab the cached DOM game container
@@ -46,6 +65,9 @@ var Sudoku = (function(){
 						var sudoku_box = document.createElement('div'),
 						current_box = ' box' + j;
 						sudoku_box.className = 'sudoku__box' + current_box;
+						var randomNum = Math.random() * (10 - 1) + 1;
+						sudoku_grid.push(Math.floor(randomNum));
+						sudoku_box.innerHTML = Math.floor(randomNum);
 						//append the sudoku box to the current sudoku module
 						sudoku_module.appendChild(sudoku_box);
 					}
@@ -69,6 +91,9 @@ var Sudoku = (function(){
 						box.style.background = 'salmon';
 					});
 			});
+			//call _randomizeGrid ... temp
+			console.log(sudoku_grid);
+			//_randomizeGrid('easy');
 	 }
 
 	 function init(){
@@ -83,3 +108,5 @@ var Sudoku = (function(){
 	 }
 
   })(); //end sudoku module
+
+Sudoku.init();
