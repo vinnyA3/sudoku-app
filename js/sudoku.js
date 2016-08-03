@@ -54,13 +54,13 @@ var Sudoku = (function(){
 		 // grab the cached DOM game container
 		 var container = sudoku_container;
 		 // Now, lets create the grid....
-		 // 9 sudoku modules will be dynamically created.
-		 // A sudoku module is a container that will contain 9 boxes (sudoku__box)
+		 // 9 sudoku row will be dynamically created.
+		 // A sudoku row is a container that will contain 9 boxes (sudoku__box)
 		 for(var i = 0; i < 9; ++i){
-			 var sudoku_module = document.createElement('div'),
-					// add a labeling class to the sudoku module: module0, module1 ..etc
-					current_module = ' module' + i;
-					sudoku_module.className = 'sudoku__module' + current_module;
+			 var sudoku_row = document.createElement('div'),
+					// add a labeling class to the sudoku row: row0, row1 ..etc
+					current_row = ' row' + i;
+					sudoku_row.className = 'sudoku__row' + current_row;
 					// Now, add 9 sudoku INPUT boxes to the current module
 					for(var j = 0; j < 9; ++j){
 						var sudoku_box = document.createElement('input'),
@@ -70,10 +70,10 @@ var Sudoku = (function(){
 						sudoku_grid.push(Math.floor(randomNum));
 						sudoku_box.value = Math.floor(randomNum);
 						// append the sudoku box to the current sudoku module
-						sudoku_module.appendChild(sudoku_box);
+						sudoku_row.appendChild(sudoku_box);
 					}
 					// append the sudoku module to the sudoku contaier
-					container.appendChild(sudoku_module);
+					container.appendChild(sudoku_row);
 			}
 	 }// ./_createGrid
 
