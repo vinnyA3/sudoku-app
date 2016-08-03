@@ -29,6 +29,12 @@ $box-hovered-bg: #fff;
 	text-align: center;
 }
 
+.sudoku__row {
+	width: 100%;
+	display: inline-block;
+	margin: 0;
+}
+
 .box__hovered {
 	position: absolute;
 	z-index: 2000;
