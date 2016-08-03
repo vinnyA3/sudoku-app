@@ -49,7 +49,7 @@ var Sudoku = (function(){
 		 }
 	 }// ./_randomizeGrid
 
-	 // Dynamically creat the grid
+	 // Dynamically create the grid
 	 function _createGrid(){
 		 //grab the cached DOM game container
 		 var container = sudoku_container;
@@ -60,14 +60,14 @@ var Sudoku = (function(){
 					//add a labeling class to the sudoku module: module0, module1 ..etc
 					current_module = ' module' + i;
 					sudoku_module.className = 'sudoku__module' + current_module;
-					//Now, add 9 sudoku boxes to the current module
+					//Now, add 9 sudoku INPUT boxes to the current module
 					for(var j = 0; j < 9; ++j){
-						var sudoku_box = document.createElement('div'),
+						var sudoku_box = document.createElement('input'),
 						current_box = ' box' + j;
 						sudoku_box.className = 'sudoku__box' + current_box;
 						var randomNum = Math.random() * (10 - 1) + 1;
 						sudoku_grid.push(Math.floor(randomNum));
-						sudoku_box.innerHTML = Math.floor(randomNum);
+						sudoku_box.value = Math.floor(randomNum);
 						//append the sudoku box to the current sudoku module
 						sudoku_module.appendChild(sudoku_box);
 					}
