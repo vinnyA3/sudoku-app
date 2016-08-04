@@ -1,15 +1,15 @@
 // Algorithms
-var Algorithms = (function() {
+module.exports = {
 	// Generate Random Number: generate a random number between two numbers
-	function _generateRandomNumber(min,max) {
+	genRandom: function generateRandomNumber(min,max) {
 		return Math.floor(Math.random() * (max - 1) + min);
-	}
+	},
 	// Filter Unique: filter out all reoccuring elements in an array
-	function _filterUnique(arr) {
+	unique: function filterUnique(arr) {
 		return arr.filter(function(val,idx,arr) {
 			return arr.indexOf(val, idx + 1) < 0;
 		});
-	}
+	},
 	/* Flip Array:
 	This function will flip and array grid 90 deg to the right
 	! view the array as a 9 X 9 grid ... its Sudoku!
@@ -18,7 +18,7 @@ var Algorithms = (function() {
   ** Note: will refactor this alg and provide clearer documentation in to how
 	this works!!
 	*/
-	function _flipArray(arr){
+	flipArr: function flipArray(arr){
 			var firstIndex,
 					newArr = [],
 					// The subract by variable will allows us to move 9 blocks to the
@@ -41,10 +41,4 @@ var Algorithms = (function() {
 		 return newArr;
 	} // ./_flipArray
 
-	return {
-		getRandom: _generateRandomNumber,
-		unique: _filterUnique,
-		flipArray: _flipArray
-	}
-
-});
+} // ./module.exports
