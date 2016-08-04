@@ -1,6 +1,7 @@
 //require main sass file
 require('../styles/_main.scss');
 //require Controls
-require('./controls.js');
+require('./controls');
 //require sudoku
-require('./sudoku.js');
+var Sudoku = require('./sudoku');
+Sudoku.init();
