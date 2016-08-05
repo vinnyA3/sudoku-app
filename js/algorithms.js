@@ -38,6 +38,11 @@ module.exports = {
                     columnNum--;
                 } //end while
                 return newArr;
-            } // ./_flipArray
-
+        }, 
+				// Flatten: flatten array
+				flatten: function flattenArr(arr) {
+					return arr.reduce(function(a,b) {
+						return a.concat(b);
+					},[]);
+				}
     } // ./module.exports
