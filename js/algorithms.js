@@ -18,31 +18,31 @@ module.exports = {
   ** Note: will refactor this alg and provide clearer documentation in to how
 	this works!! */
         flipArr: function flipArray(arr) {
-                var firstIndex,
-                    newArr = [],
-                    // The subract by variable will allows us to move 9 blocks to the
-                    // next row and box number in the grid. we take that number and push
-                    // that into the new arr
-                    subtractBy = 9,
-                    // In sudoku, the number of columns / rows will always be 9
-                    columnNum = 9;
-                while (columnNum > 0) {
-                    // the first index variable is key here ... we are always subtracting
-                    // the column every while loop. The will effectively shift the targeted
-                    // column every pass.
-                    firstIndex = ((arr.length - 1) - (columnNum - 1));
-                    for (var i = firstIndex; i >= 0; i = i - subtractBy) {
-                        newArr.push(arr[i]);
-                    }
-                    // subtract and go to the next column
-                    columnNum--;
-                } //end while
-                return newArr;
-        }, 
-				// Flatten: flatten array
-				flatten: function flattenArr(arr) {
-					return arr.reduce(function(a,b) {
-						return a.concat(b);
-					},[]);
-				}
+            var firstIndex,
+                newArr = [],
+                // The subract by variable will allows us to move 9 blocks to the
+                // next row and box number in the grid. we take that number and push
+                // that into the new arr
+                subtractBy = 9,
+                // In sudoku, the number of columns / rows will always be 9
+                columnNum = 9;
+            while (columnNum > 0) {
+                // the first index variable is key here ... we are always subtracting
+                // the column every while loop. The will effectively shift the targeted
+                // column every pass.
+                firstIndex = ((arr.length - 1) - (columnNum - 1));
+                for (var i = firstIndex; i >= 0; i = i - subtractBy) {
+                    newArr.push(arr[i]);
+                }
+                // subtract and go to the next column
+                columnNum--;
+            } //end while
+            return newArr;
+        },
+        // Flatten: flatten array
+        flatten: function flattenArr(arr) {
+            return arr.reduce(function(a, b) {
+                return a.concat(b);
+            }, []);
+        }
     } // ./module.exports
