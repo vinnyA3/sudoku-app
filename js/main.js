@@ -4,4 +4,4 @@ require('../styles/_main.scss');
 require('./controls');
 //require sudoku
 var Sudoku = require('./sudoku');
-Sudoku.init();
+Sudoku.initialize();
